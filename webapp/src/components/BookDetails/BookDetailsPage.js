@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { BOOK_LIST_API_URL } from "../constants";
+import { BOOK_LIST_API_URL } from "../../constants";
+import "./bookDetails.css"
 
 const BookDetailsPage = () => {
   const [bookDetails, updateBookDetails] = useState();

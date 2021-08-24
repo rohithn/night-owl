@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import Header from "./Header";
-import BookListPage from "./BookListPage";
-import BookDetailsPage from "./BookDetailsPage";
+import Header from "./Header/Header";
+import BookListPage from "./BookList/BookListPage";
+import BookDetailsPage from "./BookDetails/BookDetailsPage";
 
 const AppContainer = () => {
   return (

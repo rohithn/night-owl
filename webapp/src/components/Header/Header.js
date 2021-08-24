@@ -1,4 +1,5 @@
 import React from "react";
+import './header.css'
 import { useHistory } from "react-router";
 
 const Header = () => {

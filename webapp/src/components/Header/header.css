@@ -1,0 +1,69 @@
+@import url("../../css/App.css");
+
+/* Header */
+.header,
+.header-brand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  background-color: var(--color-brand);
+  z-index: 1;
+  padding: 0.5rem 1rem;
+}
+
+.header-brand {
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--color-neutral-100);
+}
+
+.header-brand-logo {
+  margin: 0 0.6rem 0 0;
+  padding: 0;
+  height: 32px;
+  width: auto;
+}
+
+.header-search {
+  margin: 0 0.6rem 0 0;
+  padding: 0;
+  height: 32px;
+  width: auto;
+}
+
+.header-title {
+  margin: 0;
+  padding: 0;
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+}
+
+.header-right-nav {
+  display: flex;
+  align-items: center;
+  color: var(--color-neutral-100);
+  gap: 1rem;
+}
+
+.header-right-nav p {
+  margin: 0 2rem 0 0.4rem;
+  padding: 0;
+  font-weight: var(--fw-semibold);
+}
+
+.header-search-bar {
+  background-color: var(--color-brand-rgb);
+  border-color: var(--color-neutral-80);
+  font-weight: var(--fw-semibold);
+  border-radius: 1.25rem;
+}
+
+.header-search-bar::placeholder {
+  color: var(--color-neutral-80);
+  opacity: 1; /* Firefox */
+}
