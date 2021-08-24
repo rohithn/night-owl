@@ -6,7 +6,7 @@ const Header = () => {
 
   return (
     <div className="header">
-      <a className="header-brand" onClick={() => history.push("/")}>
+      <a className="header-brand" onClick={() => history.push("/")} href="/">
         <svg
           className="header-brand-logo"
           version="1.0"
@@ -20,6 +20,29 @@ const Header = () => {
         </svg>
         <h2 className="header-title">Night Owl</h2>
       </a>
+      <div className="header-right-nav">
+        <div>
+          <input
+            type="text"
+            className="form-control header-search-bar"
+            id="search-control"
+            placeholder="Search"
+          />
+        </div>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            className="bi bi-person-fill"
+            viewBox="0 0 16 16"
+          >
+            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+          </svg>
+          <p>Login</p>
+        </div>
+      </div>
     </div>
   );
 };

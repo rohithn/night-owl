@@ -1,13 +1,25 @@
 const db = require("../config/dbconfig");
 
 // Get all books
-exports.getAllBooks = (request, response) => {
-  db.query(`select * from bookstall.books`, (err, res) => {
-    if (err) {
-      response.status(500).json(err);
-    }
+exports.getAllBooks = async (request, response) => {
+  // db.query(`select * from bookstall.books`, (err, res) => {
+  //   if (err) {
+  //     response.status(500).json(err);
+  //   }
+  //   response.status(res.statusCode).json(res.data);
+  // });
+
+  try {
+    const res = await db.searchByValue({
+      table: "books",
+      searchAttribute: "id",
+      searchValue: "*",
+      attributes: ["*"],
+    });
     response.status(res.statusCode).json(res.data);
-  });
+  } catch (err) {
+    response.status(500).json(err);
+  }
 };
 
 // Getting a book details by its id

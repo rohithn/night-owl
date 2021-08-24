@@ -15,7 +15,9 @@ bookstall.post("/books", bookscontroller.createBook);
 bookstall.post("/books/bulk", bookscontroller.bulkCreateBooks);
 
 bookstall.get("/categories", categoriesController.getAllCategories);
+
 bookstall.post("/categories", categoriesController.createCategory);
+
 bookstall.post("/categories/bulk", categoriesController.bulkCreateCategories);
 
 module.exports = bookstall;
