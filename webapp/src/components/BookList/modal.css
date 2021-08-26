@@ -1,0 +1,26 @@
+@import url(../../css/App.css);
+
+.modal-content {
+  background-color: var(--color-neutral-80);
+}
+
+.modal-header {
+  border-bottom: 1px solid var(--color-neutral-70);
+}
+
+.modal-footer {
+  border-top: 1px solid var(--color-neutral-70);
+}
+
+.offcanvas {
+  background-color: var(--color-neutral-80);
+}
+
+.offcanvas-header,
+.offcanvas-body {
+  border: 0;
+}
+
+.offcanvas-end {
+  top: 54px;
+}

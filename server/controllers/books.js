@@ -6,10 +6,9 @@ exports.getAllBooks = async (request, response) => {
     const { categories, sortBy, sortOrder } = request.query;
 
     //let selectQuery = "select * from bookstall.books as b";
-    let selectQuery = `select b.id, c.name category, avg(r.rating) rating 
+    let selectQuery = `select b.id, b.cover, b.title, b.author, c.name category, c.id category_id, avg(r.rating) rating 
     from bookstall.books b join bookstall.categories c on b.category_id=c.id 
-    left outer join bookstall.ratings r on b.id=r.book_id 
-    group by b.id, c.name`;
+    left outer join bookstall.ratings r on b.id=r.book_id`;
 
     if (categories) {
       selectQuery += ` where b.category_id in (${categories
@@ -18,14 +17,13 @@ exports.getAllBooks = async (request, response) => {
         .join(",")})`;
     }
 
+    selectQuery += ` group by b.id, c.name, b.cover, b.title, b.author, c.id`;
+
     if (sortBy) {
       selectQuery += ` order by ${sortBy} ${sortOrder}`;
     }
 
-    console.log("Get books query: " + selectQuery);
     const { data } = await db.query(selectQuery);
-
-    // const { data } = await db.query();
 
     response.json(data);
   } catch (error) {

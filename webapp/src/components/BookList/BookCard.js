@@ -5,7 +5,6 @@ const BookCard = ({ book }) => {
   const history = useHistory();
   return (
     <div
-      key={book.id}
       className="book"
       onClick={() => history.push(`/bookdetails/${book.id}`)}
     >
@@ -22,9 +21,9 @@ const BookCard = ({ book }) => {
           by <strong>{book.author}</strong>
         </p>
         <p className="book-rating">
-          Rating: <strong>{book.rating} / 5</strong>
+          Rating: {book.rating ? <strong>{book.rating} / 5</strong> : "-"}
         </p>
-        <span className="book-category">Fiction</span>
+        <span className="book-category">{book.category}</span>
       </div>
     </div>
   );
