@@ -1,6 +1,7 @@
+const bookstall = require("express").Router();
 const bookscontroller = require("../controllers/books");
 const categoriesController = require("../controllers/category");
-const bookstall = require("express").Router();
+const ratingsController = require("../controllers/ratings");
 
 // Get All books
 bookstall.get("/books", bookscontroller.getAllBooks);
@@ -19,5 +20,9 @@ bookstall.get("/categories", categoriesController.getAllCategories);
 bookstall.post("/categories", categoriesController.createCategory);
 
 bookstall.post("/categories/bulk", categoriesController.bulkCreateCategories);
+
+bookstall.get("/ratings", ratingsController.getAllRatings);
+
+bookstall.post("/ratings", ratingsController.addRating);
 
 module.exports = bookstall;
