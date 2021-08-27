@@ -25,4 +25,6 @@ bookstall.get("/ratings", ratingsController.getAllRatings);
 
 bookstall.post("/ratings", ratingsController.addRating);
 
+bookstall.get("/ratings/:id", ratingsController.getRatingsByBook);
+
 module.exports = bookstall;

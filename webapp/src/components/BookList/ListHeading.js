@@ -16,6 +16,7 @@ const ListHeading = ({
         return {
           id: c.id,
           value: c.name,
+          description: c.description,
           checked: selectedCategories.includes(c.id) ? true : false,
         };
       })
@@ -76,29 +77,33 @@ const ListHeading = ({
               </div>
               <div className="modal-body">
                 {selection.map((c) => (
-                  <div key={c.id} className="form-check py-2">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      value={c.value}
-                      id={c.id}
-                      defaultChecked={c.checked}
-                      onChange={handleChange}
-                    />
-                    <label className="form-check-label ps-2" htmlFor={c.id}>
-                      {c.value.toUpperCase()}
-                    </label>
-                  </div>
+                  <ul class="list-group">
+                    <li class="list-group-item d-flex align-items-center gap-2">
+                      <input
+                        className="checkbox form-check-input flex-shrink-0"
+                        type="checkbox"
+                        value={c.value}
+                        id={c.id}
+                        defaultChecked={c.checked}
+                        onChange={handleChange}
+                      />
+                      <label className="ms-2 flex-grow-1" htmlFor={c.id}>
+                        {c.value}
+                        <small class="d-block text-white-50">
+                          {c.description}
+                        </small>
+                      </label>
+                    </li>
+                  </ul>
                 ))}
               </div>
               <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-outline-warning"
+                <span
+                  className="text-warning me-3 btn-cancel"
                   data-bs-dismiss="modal"
                 >
                   Cancel
-                </button>
+                </span>
                 <button
                   type="button"
                   className="btn btn-outline-warning"

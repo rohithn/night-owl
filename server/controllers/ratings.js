@@ -1,6 +1,6 @@
 const db = require("../config/dbconfig");
 
-// Get all books
+// Get all ratings
 exports.getAllRatings = (request, response) => {
   db.query(`select * from bookstall.ratings`, (err, res) => {
     if (err) {
@@ -8,6 +8,18 @@ exports.getAllRatings = (request, response) => {
     }
     response.status(res.statusCode).json(res.data);
   });
+};
+
+exports.getRatingsByBook = (request, response) => {
+  db.query(
+    `select * from bookstall.ratings where book_id="${request.params.id}"`,
+    (err, res) => {
+      if (err) {
+        response.status(500).json(err);
+      }
+      response.status(res.statusCode).json(res.data);
+    }
+  );
 };
 
 exports.addRating = (request, response) => {

@@ -1,26 +1,50 @@
 @import url(../../css/App.css);
 
 .modal-content {
-  background-color: var(--color-neutral-80);
+  background-color: var(--color-neutral-90);
+  border: 1px solid rgba(var(--color-neutral-10-rgb), 0.3);
 }
 
 .modal-header {
-  border-bottom: 1px solid var(--color-neutral-70);
+  /* border-bottom: 1px solid rgba(var(--color-neutral-10-rgb), 0.3); */
+  border-bottom: 0;
+}
+
+.modal-body {
+  padding: 0;
 }
 
 .modal-footer {
   border-top: 1px solid var(--color-neutral-70);
 }
 
-.offcanvas {
-  background-color: var(--color-neutral-80);
+.list-group {
+  border-radius: 0;
+  padding-right: 2rem;
 }
 
-.offcanvas-header,
-.offcanvas-body {
+.list-group-item {
+  background-color: transparent;
+  color: var(--color-neutral-20);
+  border-top: 1px solid rgba(var(--color-neutral-10-rgb), 0.2);
+}
+
+.form-check-input {
+  background-color: transparent;
+}
+
+.form-check-input[type="checkbox"] {
+  border-radius: 0.4em;
+  height: 1.25rem;
+  width: 1.25rem;
+  border: 1px solid var(--color-neutral-70);
+}
+
+.form-check-input:checked {
+  background-color: rgba(var(--color-secondary-rgb), 0.9);
   border: 0;
 }
 
-.offcanvas-end {
-  top: 54px;
+.btn-cancel {
+  cursor: pointer;
 }
