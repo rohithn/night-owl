@@ -3,8 +3,10 @@ import { BOOK_LIST_API_URL, CATEGORIES_API_URL } from "../../constants";
 import "./bookList.css";
 import ListHeading from "./ListHeading";
 import BookCard from "./BookCard";
+import { useHistory } from "react-router-dom";
 
 const BookListPage = () => {
+  const history = useHistory();
   const [bookList, setBookList] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -67,7 +69,11 @@ const BookListPage = () => {
             handleSelectionChange={handleSelectionChange}
           />
           {bookList.map((book) => (
-            <BookCard key={book.id} book={book} />
+            <BookCard
+              key={book.id}
+              book={book}
+              onSelect={() => history.push(`/bookdetails/${book.id}`)}
+            />
           ))}
         </div>
       )}
