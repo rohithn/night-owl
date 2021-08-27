@@ -63,6 +63,14 @@ html {
   font-weight: var(--fw-regular);
 }
 
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
 /* --------------------------------------------------*/
 /* Loader */
 /* --------------------------------------------------*/

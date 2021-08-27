@@ -45,6 +45,11 @@
   border: 0;
 }
 
+.form-check-input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 .btn-cancel {
   cursor: pointer;
 }

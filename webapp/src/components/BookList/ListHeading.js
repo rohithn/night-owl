@@ -47,14 +47,14 @@ const ListHeading = ({
       <div>
         <button
           type="button"
-          className="btn btn-outline-warning mx-3 pe-auto"
+          className="btn btn-outline-warning mx-3 pe-auto rounded-pill"
           onClick={handleSort}
         >
           Sort by Rating
         </button>
         <button
           type="button"
-          className="btn btn-outline-warning"
+          className="btn btn-outline-warning rounded-pill"
           data-bs-toggle="modal"
           data-bs-target="#exampleModal"
         >

@@ -1,4 +1,5 @@
 const db = require("../config/dbconfig");
+const bookstall = require("../routes/bookstall");
 
 // Get all books
 exports.getAllBooks = async (request, response) => {
@@ -45,6 +46,11 @@ exports.getById = (request, response) => {
 
 exports.createBook = (request, response) => {
   const { body } = request;
+
+  if (!body.title || body.title.length < 3) {
+    response.status(400).json({ message: "Title cannot be empty" });
+    return;
+  }
 
   db.insert(
     {

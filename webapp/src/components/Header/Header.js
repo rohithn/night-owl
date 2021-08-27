@@ -1,5 +1,5 @@
 import React from "react";
-import './header.css'
+import "./header.css";
 import { useHistory } from "react-router";
 
 const Header = () => {
@@ -22,6 +22,23 @@ const Header = () => {
         <h2 className="header-title">Night Owl</h2>
       </a>
       <div className="header-right-nav">
+        <div
+          className="add-book d-flex align-items-center cursor-pointer"
+          onClick={() => history.push("/addbook")}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            className="bi bi-plus-circle"
+            viewBox="0 0 16 16"
+          >
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+          </svg>
+          <span className="px-2 fw-normal">Add Book</span>
+        </div>
         <div>
           <input
             type="text"
@@ -30,7 +47,7 @@ const Header = () => {
             placeholder="Search"
           />
         </div>
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <div className="d-flex align-items-center pe-0 me-0 cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -41,7 +58,7 @@ const Header = () => {
           >
             <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
           </svg>
-          <p>Login</p>
+          <span className="px-1 fw-bolder">user</span>
         </div>
       </div>
     </div>
