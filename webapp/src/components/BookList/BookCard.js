@@ -1,5 +1,4 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 import { RatingView } from "react-simple-star-rating";
 
 const BookCard = ({ book, onSelect }) => {

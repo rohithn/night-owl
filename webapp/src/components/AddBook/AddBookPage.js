@@ -240,7 +240,7 @@ const AddBook = () => {
               </div>
               <div className="col-12">
                 <label htmlFor="cover" className="form-label">
-                  Image Url
+                  Cover Image Url
                 </label>
                 <input
                   type="text"
@@ -255,11 +255,11 @@ const AddBook = () => {
             </div>
             <hr className="my-4"></hr>
             <button
-              className="w-100 btn btn-outline-warning btn-lg mb-5"
+              className="w-100 btn btn-outline-warning btn mb-5"
               type="submit"
               onClick={handleSubmit}
             >
-              Add To Library
+              <span className="text-uppercase">Add To Library</span>
             </button>
           </form>
         </div>
