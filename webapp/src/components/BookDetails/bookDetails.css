@@ -4,20 +4,22 @@
 /* Book Details */
 /* --------------------------------------------------*/
 .book-details {
-  display: flex;
+  /* display: flex;
   grid-gap: 2.6rem;
   max-width: 1140px;
-  margin: 1.6rem auto;
+  margin: 1.6rem auto; */
   color: var(--color-neutral-40);
 }
 
 .book-details-cover {
-  flex-basis: 340px;
-  flex-shrink: 0;
+  /* flex-basis: 340px;
+  flex-shrink: 0; */
 }
 
 .book-content-cover-image {
-  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
   height: auto;
 }
 
@@ -26,7 +28,6 @@
 }
 
 .book-details-content .content-title {
-  margin: 0.8rem 0 0.4rem 0;
   font-size: var(--fs-xl);
   color: var(--color-neutral-10);
   line-height: var(--lh-lg);
@@ -34,7 +35,6 @@
 
 .book-details-content .content-author,
 .book-details-content .content-rating {
-  margin: 0 0 0.4rem 0;
   color: var(--color-neutral-40);
   font-size: var(--fs-rg);
 }
@@ -80,4 +80,10 @@
   border-radius: 0.4rem;
   background-color: rgba(var(--color-secondary-rgb), 0.2);
   line-height: 1;
+}
+
+.scrolls {
+  padding: 1rem;
+  overflow-x: auto;
+  flex-wrap: nowrap;
 }

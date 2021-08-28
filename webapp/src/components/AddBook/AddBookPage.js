@@ -255,7 +255,7 @@ const AddBook = () => {
             </div>
             <hr className="my-4"></hr>
             <button
-              className="w-100 btn btn-outline-warning btn mb-5"
+              className="w-100 btn-default btn-block mb-5"
               type="submit"
               onClick={handleSubmit}
             >

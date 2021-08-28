@@ -23,6 +23,7 @@ html {
 }
 
 .list-heading-title {
+  color: rgba(var(--color-neutral-10-rgb), 0.8);
   font-weight: var(--fw-semibold);
 }
 
@@ -44,6 +45,7 @@ html {
   text-transform: uppercase;
   font-weight: var(--fw-bold);
   color: var(--color-brand);
+  font-size: var(--fs-sm);
 }
 
 .btn-default:hover,
