@@ -77,8 +77,8 @@ const ListHeading = ({
               </div>
               <div className="modal-body">
                 {selection.map((c) => (
-                  <ul class="list-group">
-                    <li class="list-group-item d-flex align-items-center gap-2">
+                  <ul key={c.id} className="list-group">
+                    <li className="list-group-item d-flex align-items-center gap-2">
                       <input
                         className="checkbox form-check-input flex-shrink-0"
                         type="checkbox"
@@ -89,7 +89,7 @@ const ListHeading = ({
                       />
                       <label className="ms-2 flex-grow-1" htmlFor={c.id}>
                         {c.value}
-                        <small class="d-block text-white-50">
+                        <small className="d-block text-white-50">
                           {c.description}
                         </small>
                       </label>

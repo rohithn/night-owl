@@ -81,9 +81,3 @@
   background-color: rgba(var(--color-secondary-rgb), 0.2);
   line-height: 1;
 }
-
-.scrolls {
-  padding: 1rem;
-  overflow-x: auto;
-  flex-wrap: nowrap;
-}

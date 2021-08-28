@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { BOOK_LIST_API_URL, CATEGORIES_API_URL } from "../../constants";
+import { useHistory } from "react-router-dom";
+import { fetchBooksByCategories } from "../../services/book.service";
+import { fetchAllCategories } from "../../services/categories.service";
+import BookCard from "./BookCard";
 import "./bookList.css";
 import ListHeading from "./ListHeading";
-import BookCard from "./BookCard";
-import { useHistory } from "react-router-dom";
 
 const BookListPage = () => {
   const history = useHistory();
@@ -14,36 +15,31 @@ const BookListPage = () => {
   const [isSortDescending, setIsSortDescending] = useState(false);
 
   useEffect(() => {
-    async function fetchCategories() {
+    async function getCategoryData() {
       setLoading(true);
-      const categoriesRes = await fetch(CATEGORIES_API_URL);
-      const categoriesJson = await categoriesRes.json();
 
+      // Get category list
+      const categoriesJson = await fetchAllCategories();
       setCategories(categoriesJson);
-      setSelectedCategories(categoriesJson.map((c) => c.id));
 
+      // Create initial list for category filter
+      setSelectedCategories(categoriesJson.map((c) => c.id));
       setLoading(false);
     }
 
-    fetchCategories();
+    getCategoryData();
   }, []);
 
   useEffect(() => {
-    async function fetchBooks(cat) {
+    async function getBookData(cat) {
       setLoading(true);
-      const bookListResponse = await fetch(
-        `${BOOK_LIST_API_URL}?categories=${cat.join(
-          ","
-        )}&sortBy=rating&sortOrder=${isSortDescending ? "desc" : "asc"}`
-      );
-      const bookListJsonData = await bookListResponse.json();
-
+      const bookListJsonData = await fetchBooksByCategories(cat);
       setBookList(bookListJsonData || []);
       setLoading(false);
     }
 
     if (selectedCategories.length > 0) {
-      fetchBooks(selectedCategories);
+      getBookData(selectedCategories);
     }
   }, [selectedCategories, isSortDescending]);
 

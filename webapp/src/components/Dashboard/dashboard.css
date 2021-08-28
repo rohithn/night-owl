@@ -1,0 +1,25 @@
+@import url("../../css/App.css");
+
+.dashboard-content .top-books-list {
+  display: grid;
+
+  grid-gap: 2rem;
+  padding: 1rem;
+  grid-template-columns: 10px repeat(6, calc(50% - var(--gutter) * 2)) 10px;
+
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(260px, 1fr);
+  overflow-x: auto;
+
+  justify-content: start;
+
+  padding: 1rem;
+  padding-left: 2rem;
+}
+
+.dashboard-content .list-book {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 260px);
+  grid-gap: 2rem;
+}

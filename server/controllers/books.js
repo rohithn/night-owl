@@ -4,7 +4,7 @@ const bookstall = require("../routes/bookstall");
 // Get all books
 exports.getAllBooks = async (request, response) => {
   try {
-    const { categories, sortBy, sortOrder } = request.query;
+    const { categories, sortBy, sortOrder, limit } = request.query;
 
     //let selectQuery = "select * from bookstall.books as b";
     let selectQuery = `select b.id, b.cover, b.title, b.author, c.name category, c.id category_id, avg(r.rating) rating 
@@ -22,6 +22,10 @@ exports.getAllBooks = async (request, response) => {
 
     if (sortBy) {
       selectQuery += ` order by ${sortBy} ${sortOrder}`;
+    }
+
+    if (limit) {
+      selectQuery += ` limit ${limit}`;
     }
 
     const { data } = await db.query(selectQuery);

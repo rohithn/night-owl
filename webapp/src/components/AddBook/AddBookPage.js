@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { BOOK_LIST_API_URL, CATEGORIES_API_URL } from "../../constants";
+import { saveBook } from "../../services/book.service";
+import { fetchAllCategories } from "../../services/categories.service";
 import BookCard from "../BookList/BookCard";
 import "./addbook.css";
 
@@ -20,12 +21,11 @@ const AddBook = () => {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    const fetchCategories = async () => {
-      const categoriesRes = await fetch(CATEGORIES_API_URL);
-      const categoriesJson = await categoriesRes.json();
+    const getCategoryData = async () => {
+      const categoriesJson = await fetchAllCategories();
       setCategories(categoriesJson);
     };
-    fetchCategories();
+    getCategoryData();
   }, []);
 
   const onCategorySelect = (e) => {
@@ -35,11 +35,6 @@ const AddBook = () => {
       category_id: value,
       category: options[selectedIndex].text,
     });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    saveBook();
   };
 
   const handleInputChange = (e) => {
@@ -54,24 +49,19 @@ const AddBook = () => {
     setMessage("");
   };
 
-  const saveBook = async () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    submitBook();
+  };
+
+  const submitBook = async () => {
     if (bookDetails) {
-      const requestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(bookDetails),
-      };
       try {
-        const resp = await fetch(BOOK_LIST_API_URL, requestOptions);
-        const respJson = await resp.json();
-        if (resp.status === 200) {
-          setMessage("Book added successfully: " + respJson.inserted_hashes[0]);
-        } else {
-          setMessage("Error: " + respJson.message);
-        }
+        const resp = await saveBook(bookDetails);
+        setMessage("Book added successfully: " + resp.inserted_hashes[0]);
         setBookDetails(emptyBook);
       } catch (e) {
-        setMessage(e);
+        setMessage(e.message);
       }
       window.scrollTo(0, 0);
     }
@@ -83,14 +73,14 @@ const AddBook = () => {
         <div className="add-book-alert col-md-10">
           {message ? (
             <div
-              class="alert alert-warning alert-dismissible my-2"
+              className="alert alert-warning alert-dismissible my-2"
               role="alert"
               id="messageAlert"
             >
               {message}
               <button
                 type="button"
-                class="btn-close"
+                className="btn-close"
                 aria-label="Close"
                 onClick={handleDismissAlert}
               ></button>
@@ -100,15 +90,14 @@ const AddBook = () => {
           )}
         </div>
         <div className="add-book-title col-md-10">
-          <div class="py-5 text-center">
+          <div className="py-5 text-center">
             <h2>Add Book</h2>
-            <p class="lead">
+            <p className="lead">
               Use the form below to add a book to the library. The form is not
               validated currently, so please make sure that all fields are
               filled in correctly.
             </p>
           </div>
-          {/* <h4 className="col-md-6 my-4">Add a book</h4> */}
         </div>
         <div className="add-book-form col-md-7">
           <form className="needs-validation" noValidate>
