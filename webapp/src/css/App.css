@@ -5,6 +5,7 @@
 
 body,
 html {
+  height: 100%;
   margin: 0;
   padding: 0;
   background-color: var(--color-neutral-90);
@@ -12,6 +13,17 @@ html {
   font-family: Inter, -apple-system, Roboto, Helvetica Neue, sans-serif;
   font-size: 16px;
   line-height: 1.6;
+  /* position: relative; */
+}
+
+#root {
+  height: 100%;
+}
+
+.footer {
+  width: 100%;
+  position: relative;
+  margin-top: -100px;
 }
 
 .list-heading {
@@ -71,6 +83,12 @@ html {
   font-weight: var(--fw-regular);
 }
 
+.btn-default-fill {
+  background-color: rgba(var(--color-brand-rgb), 0.9);
+  color: var(--color-neutral-100);
+  cursor: pointer;
+}
+
 .btn:focus {
   outline: none;
   box-shadow: none;
@@ -79,6 +97,20 @@ html {
 .cursor-pointer {
   cursor: pointer;
 }
+
+/* Change autofil bg color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--color-neutral-90) inset !important;
+}
+
+/*Change text in autofill textbox*/
+input:-webkit-autofill {
+  -webkit-text-fill-color: var(--color-neutral-20) !important;
+}
+
 /* --------------------------------------------------*/
 /* Loader */
 /* --------------------------------------------------*/

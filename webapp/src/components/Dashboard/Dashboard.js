@@ -28,17 +28,7 @@ const Dashboard = () => {
     fetchCategories();
   }, []);
 
-  return (
-    <>
-      {loading ? (
-        <div className="loader" />
-      ) : (
-        <>
-          <BookListPage />
-        </>
-      )}
-    </>
-  );
+  return <>{loading ? <div className="loader" /> : <></>}</>;
 };
 
 export default Dashboard;

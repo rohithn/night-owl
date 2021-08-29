@@ -7,3 +7,22 @@
   width: auto;
   height: auto;
 }
+
+.add-book-content .form-control {
+  color: var(--color-neutral-20);
+}
+
+.add-book-content .form-select {
+  color: var(--color-neutral-40);
+  background-color: var(--color-neutral-90);
+  border: 1px solid rgba(var(--color-neutral-10-rgb), 0.1);
+}
+
+.add-book-content .form-select:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.add-book-content .form-label {
+  color: var(--color-neutral-20);
+}

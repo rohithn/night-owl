@@ -1,24 +1,35 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import Header from "./Header/Header";
-import BookListPage from "./BookList/BookListPage";
-import BookDetailsPage from "./BookDetails/BookDetailsPage";
+import { AdminRoute, AuthRoute, PrivateRoute } from "../routes/ProtectedRoutes";
 import AddBook from "./AddBook/AddBookPage";
-import Footer from "./Header/Footer";
+import SignIn from "./Auth/SignIn";
+import SignUp from "./Auth/SignUp";
+import BookDetailsPage from "./BookDetails/BookDetailsPage";
+import BookListPage from "./BookList/BookListPage";
 import Dashboard from "./Dashboard/Dashboard";
+import NotFoundPage from "./ErrorPages/NotFoundPage";
+import Header from "./Header/Header";
 
 const AppContainer = () => {
   return (
-    <div>
+    <>
       <Header />
-      <Switch>
-        <Route exact path={"/"} component={BookListPage} />
-        <Route exact path={"/bookdetails/:id"} component={BookDetailsPage} />
-        <Route exact path={"/addbook"} component={AddBook} />
-        <Route exact path={"/dashboard"} component={Dashboard} />
-      </Switch>
-      <Footer />
-    </div>
+      <div className="app-content">
+        <Switch>
+          <PrivateRoute exact path={"/"} component={BookListPage} />
+          <PrivateRoute
+            exact
+            path={"/bookdetails/:id"}
+            component={BookDetailsPage}
+          />
+          <AdminRoute exact path={"/addbook"} component={AddBook} />
+          <PrivateRoute exact path={"/dashboard"} component={Dashboard} />
+          <AuthRoute path={"/login"} component={SignIn} />
+          <AuthRoute path={"/register"} component={SignUp} />
+          <Route component={NotFoundPage} />
+        </Switch>
+      </div>
+    </>
   );
 };
 

@@ -142,7 +142,6 @@ const AddBook = () => {
                   Author
                 </label>
                 <div className="input-group has-validation">
-                  <span className="input-group-text">@</span>
                   <input
                     type="text"
                     className="form-control"

@@ -9,6 +9,7 @@
 }
 
 .header {
+  width: 100%;
   position: sticky;
   top: 0;
   background-color: var(--color-brand);
@@ -66,4 +67,9 @@
 .header-search-bar::placeholder {
   color: var(--color-neutral-80);
   opacity: 1; /* Firefox */
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--color-brand);
 }

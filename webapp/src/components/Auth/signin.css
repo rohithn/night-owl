@@ -1,0 +1,59 @@
+@import url(../../css/App.css);
+
+.signin-content {
+  margin-top: 4rem;
+  display: flex;
+  align-items: center;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+
+.form-signin .checkbox {
+  font-weight: 400;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  color: var(--color-neutral-10);
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  color: var(--color-neutral-10);
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  color: var(--color-neutral-10);
+}
+
+.form-control {
+  background-color: var(--color-neutral-90);
+  border: 1px solid rgba(var(--color-neutral-10-rgb), 0.1);
+}
+
+.form-control:focus {
+  background-color: var(--color-neutral-90);
+  border: 1px solid rgba(var(--color-neutral-10-rgb), 0.1);
+  outline: none;
+  box-shadow: none;
+}
+
+.sign-in-logo {
+  color: white;
+}

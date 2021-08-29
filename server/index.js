@@ -7,16 +7,16 @@ const routes = require("./routes/index");
 
 // Adding the CORS policy setting
 app.use((req, res, next) => {
+  console.log("using cors");
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
+    "Origin, X-Requested-With, Content-Type, Authorization, Accept"
   );
   next();
 });
 
 // Adding the body parser
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
