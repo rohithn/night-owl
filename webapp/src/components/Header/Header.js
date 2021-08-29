@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import "./header.css";
+import React from "react";
 import { useHistory } from "react-router";
 import { useAuth } from "../../contexts/AuthContext";
+import "./header.css";
 
 const Header = () => {
   const history = useHistory();
