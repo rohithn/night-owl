@@ -30,6 +30,8 @@ const BookDetailsPage = () => {
 
       const recommendedBooksJson = await fetchBooksByCategories([
         bookDetailsData.category_id,
+        "rating",
+        true,
       ]);
       setBookInCategory(
         // Remove current book

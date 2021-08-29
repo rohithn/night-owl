@@ -4,10 +4,10 @@ const bookstall = require("../routes/bookstall");
 // Get all books
 exports.getAllBooks = async (request, response) => {
   try {
-    const { categories, sortBy, sortOrder, limit } = request.query;
+    const { author, categories, sortBy, sortOrder, limit } = request.query;
 
     //let selectQuery = "select * from bookstall.books as b";
-    let selectQuery = `select b.id, b.cover, b.title, b.author, c.name category, c.id category_id, avg(r.rating) rating 
+    let selectQuery = `select b.id, b.cover, b.title, b.author, c.name category, c.id category_id, avg(r.rating) rating, b.__createdtime__ createdtime 
     from bookstall.books b join bookstall.categories c on b.category_id=c.id 
     left outer join bookstall.ratings r on b.id=r.book_id`;
 
@@ -16,17 +16,23 @@ exports.getAllBooks = async (request, response) => {
         .split(",")
         .map((c) => `'${c}'`)
         .join(",")})`;
+    } else if (author) {
+      selectQuery += ` where b.author='${author}'`;
     }
 
-    selectQuery += ` group by b.id, c.name, b.cover, b.title, b.author, c.id`;
+    selectQuery += ` group by b.id, c.name, b.cover, b.title, b.author, c.id, b.__createdtime__`;
 
     if (sortBy) {
       selectQuery += ` order by ${sortBy} ${sortOrder}`;
+    } else {
+      selectQuery += ` order by __createdtime__ desc`;
     }
 
     if (limit) {
       selectQuery += ` limit ${limit}`;
     }
+
+    console.log(selectQuery);
 
     const { data } = await db.query(selectQuery);
 
@@ -85,4 +91,27 @@ exports.bulkCreateBooks = (request, response) => {
       response.status(res.statusCode).json(res.data);
     }
   );
+};
+
+exports.getBookCountByCategory = async (request, response) => {
+  try {
+    const query = `select c.name, count(c.id) book_count, c.id from bookstall.categories c 
+  join bookstall.books b on c.id = b.category_id group by c.name, c.id
+  order by book_count desc`;
+    const { data } = await db.query(query);
+    response.status(200).json(data);
+  } catch (err) {
+    response.status(500).json(err);
+  }
+};
+
+exports.getBookCountByAuthor = async (request, response) => {
+  try {
+    const query = `select author, count(author) book_count from bookstall.books 
+    group by author order by book_count desc`;
+    const { data } = await db.query(query);
+    response.status(200).json(data);
+  } catch (err) {
+    response.status(500).json(err);
+  }
 };

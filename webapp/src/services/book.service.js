@@ -1,13 +1,21 @@
 import {
   getBookById,
+  getBookCountByAuthor,
+  getBookCountByCategory,
   getBooks,
+  getBooksByAuthor,
   getCategories,
   getRatingForBook,
+  getTopBooks,
   postBook,
 } from "./apis";
 
-export const fetchAllBooks = async () => {
-  return await getBooks([], "rating", false);
+export const fetchAllBooks = async (sortyBy, descSort) => {
+  return await getBooks([], sortyBy, descSort);
+};
+
+export const fetchTopBooks = async () => {
+  return await getTopBooks();
 };
 
 export const fetchBookDetails = async (id) => {
@@ -34,7 +42,19 @@ export const fetchBookDetails = async (id) => {
 };
 
 export const fetchBooksByCategories = async (categories) => {
-  return await getBooks(categories, "rating", false);
+  return await getBooks(categories, "rating", true);
+};
+
+export const fetchBooksByAuthor = async (author) => {
+  return await getBooksByAuthor(author, "rating", true);
+};
+
+export const fetchBookCountByCategory = async () => {
+  return await getBookCountByCategory();
+};
+
+export const fetchBookCountByAuthor = async () => {
+  return await getBookCountByAuthor();
 };
 
 export const saveBook = async (book) => {

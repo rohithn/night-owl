@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { fetchBooksByCategories } from "../../services/book.service";
+import { fetchAllBooks } from "../../services/book.service";
 import { fetchAllCategories } from "../../services/categories.service";
 import BookCard from "./BookCard";
 import "./bookList.css";
@@ -33,7 +33,12 @@ const BookListPage = () => {
   useEffect(() => {
     async function getBookData(cat) {
       setLoading(true);
-      const bookListJsonData = await fetchBooksByCategories(cat);
+      let bookListJsonData = [];
+      if (isSortDescending) {
+        bookListJsonData = await fetchAllBooks("rating", true);
+      } else {
+        bookListJsonData = await fetchAllBooks("b.__createdtime__", true);
+      }
       setBookList(bookListJsonData || []);
       setLoading(false);
     }
@@ -47,32 +52,30 @@ const BookListPage = () => {
     setIsSortDescending(!isSortDescending);
   };
 
+  // Not used now
   const handleSelectionChange = (selection) => {
     setSelectedCategories(selection);
   };
 
   return (
     <div className="book-list-page">
-      {loading ? (
-        <div className="loader" />
-      ) : (
-        <div className="list-book">
-          <ListHeading
-            heading="Library"
-            allCategories={categories}
-            selectedCategories={selectedCategories}
-            handleSort={handleSort}
-            handleSelectionChange={handleSelectionChange}
+      {loading ? <div className="loader" /> : <></>}
+      <div className="list-book">
+        <ListHeading
+          heading="Library"
+          allCategories={categories}
+          selectedCategories={selectedCategories}
+          sortSelected={isSortDescending}
+          onSort={handleSort}
+        />
+        {bookList.map((book) => (
+          <BookCard
+            key={book.id}
+            book={book}
+            onSelect={() => history.push(`/bookdetails/${book.id}`)}
           />
-          {bookList.map((book) => (
-            <BookCard
-              key={book.id}
-              book={book}
-              onSelect={() => history.push(`/bookdetails/${book.id}`)}
-            />
-          ))}
-        </div>
-      )}
+        ))}
+      </div>
     </div>
   );
 };

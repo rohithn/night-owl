@@ -7,6 +7,10 @@ const { loggedIn, adminOnly } = require("../utility/auth.middleware");
 // Get All books
 bookstall.get("/books", bookscontroller.getAllBooks);
 
+bookstall.get("/books/categories", bookscontroller.getBookCountByCategory);
+
+bookstall.get("/books/authors", bookscontroller.getBookCountByAuthor);
+
 // Get Book details passing id as parameter
 bookstall.get("/books/:id", loggedIn, bookscontroller.getById);
 

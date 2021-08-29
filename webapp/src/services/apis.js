@@ -1,4 +1,6 @@
 import {
+  BOOKS_AUTHOR_API_URL,
+  BOOKS_CATEGORY_API_URL,
   BOOK_LIST_API_URL,
   CATEGORIES_API_URL,
   LOGIN_API_URL,
@@ -30,8 +32,23 @@ export const getBooks = async (categories, sortBy, isSortDescending) => {
   return await bookListResponse.json();
 };
 
+export const getBooksByAuthor = async (author, sortBy, isSortDescending) => {
+  const bookListResponse = await fetch(
+    `${BOOK_LIST_API_URL}?author=${author}&sortBy=${sortBy}&sortOrder=${
+      isSortDescending ? "desc" : "asc"
+    }`
+  );
+  return await bookListResponse.json();
+};
+
+export const getTopBooks = async () => {
+  const bookListResponse = await fetch(
+    `${BOOK_LIST_API_URL}?sortBy=rating&sortOrder=desc&limit=10`
+  );
+  return await bookListResponse.json();
+};
+
 export const getBookById = async (id) => {
-  const header = { "Content-Type": "application/json", ...getAuthHeader() };
   const requestOptions = {
     method: "GET",
     headers: { "Content-Type": "application/json", ...getAuthHeader() },
@@ -110,4 +127,14 @@ export const postRegister = async (name, email, password) => {
   } else {
     throw new Error(respJson.message);
   }
+};
+
+export const getBookCountByCategory = async () => {
+  const categoriesJson = await fetch(BOOKS_CATEGORY_API_URL);
+  return await categoriesJson.json();
+};
+
+export const getBookCountByAuthor = async () => {
+  const categoriesJson = await fetch(BOOKS_AUTHOR_API_URL);
+  return await categoriesJson.json();
 };

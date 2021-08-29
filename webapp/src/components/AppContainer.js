@@ -17,14 +17,14 @@ const AppContainer = () => {
       <Header />
       <div className="app-content">
         <Switch>
-          <PrivateRoute exact path={"/"} component={BookListPage} />
+          <PrivateRoute exact path={"/"} component={Dashboard} />
           <PrivateRoute
             exact
             path={"/bookdetails/:id"}
             component={BookDetailsPage}
           />
           <AdminRoute exact path={"/addbook"} component={AddBook} />
-          <PrivateRoute exact path={"/dashboard"} component={Dashboard} />
+          <PrivateRoute exact path={"/allbooks"} component={BookListPage} />
           <AuthRoute path={"/login"} component={SignIn} />
           <AuthRoute path={"/register"} component={SignUp} />
           <Route component={NotFoundPage} />
