@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 import { doLogin } from "../../services/auth.service";
 import "./signin.css";
 
@@ -7,6 +8,8 @@ const SignIn = (props) => {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const { login } = useAuth();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,7 +25,7 @@ const SignIn = (props) => {
   };
 
   const performLogin = async () => {
-    await doLogin(email, password);
+    await login(email, password);
     history.push("/");
   };
 

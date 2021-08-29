@@ -32,7 +32,6 @@ export const getBooks = async (categories, sortBy, isSortDescending) => {
 
 export const getBookById = async (id) => {
   const header = { "Content-Type": "application/json", ...getAuthHeader() };
-  console.log(header);
   const requestOptions = {
     method: "GET",
     headers: { "Content-Type": "application/json", ...getAuthHeader() },

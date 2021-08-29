@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
+import { AuthProvider } from "../contexts/AuthContext";
 import { AdminRoute, AuthRoute, PrivateRoute } from "../routes/ProtectedRoutes";
 import AddBook from "./AddBook/AddBookPage";
 import SignIn from "./Auth/SignIn";
@@ -12,7 +13,7 @@ import Header from "./Header/Header";
 
 const AppContainer = () => {
   return (
-    <>
+    <AuthProvider>
       <Header />
       <div className="app-content">
         <Switch>
@@ -29,7 +30,7 @@ const AppContainer = () => {
           <Route component={NotFoundPage} />
         </Switch>
       </div>
-    </>
+    </AuthProvider>
   );
 };
 

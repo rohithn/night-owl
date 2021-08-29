@@ -1,25 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "./header.css";
 import { useHistory } from "react-router";
+import { useAuth } from "../../contexts/AuthContext";
 
 const Header = () => {
   const history = useHistory();
-  const [user, setUser] = useState();
-  const [isAdmin, setIsAdmin] = useState(false);
+
+  const { logout, currentUser, isAdmin } = useAuth();
 
   const handleLogout = () => {
-    localStorage.clear();
+    logout();
+    history.push("/login");
   };
-
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (user) {
-      setUser(user);
-      if (user.roles.includes("ADMIN")) {
-        setIsAdmin(true);
-      }
-    }
-  }, []);
 
   return (
     <nav className="navbar sticky-top navbar-expand-lg navbar-light">
@@ -65,7 +57,7 @@ const Header = () => {
             ) : (
               <></>
             )}
-            {user ? (
+            {currentUser ? (
               <>
                 <li className="nav-item">
                   <a
@@ -77,7 +69,33 @@ const Header = () => {
                     Dashboard
                   </a>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item dropdown">
+                  <a
+                    className="nav-link dropdown-toggle fs-6 text-dark fw-bold"
+                    href="/logout"
+                    id="navbarDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    {currentUser.name.split(" ")[0]}
+                  </a>
+                  <ul
+                    className="dropdown-menu"
+                    aria-labelledby="navbarDropdown"
+                  >
+                    <li>
+                      <a
+                        className="dropdown-item"
+                        href="/login"
+                        onClick={handleLogout}
+                      >
+                        Sign Out
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                {/* <li className="nav-item">
                   <a
                     className="nav-link"
                     aria-current="page"
@@ -86,20 +104,10 @@ const Header = () => {
                   >
                     Sign Out
                   </a>
-                </li>
+                </li> */}
               </>
             ) : (
               <>
-                <li className="nav-item">
-                  <a
-                    className="nav-link"
-                    aria-current="page"
-                    href="/login"
-                    onClick={() => history.push("/login")}
-                  >
-                    Sign in
-                  </a>
-                </li>
                 <li className="nav-item">
                   <a
                     className="nav-link"
@@ -108,6 +116,16 @@ const Header = () => {
                     onClick={() => history.push("/register")}
                   >
                     Register
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a
+                    className="nav-link"
+                    aria-current="page"
+                    href="/login"
+                    onClick={() => history.push("/login")}
+                  >
+                    Sign in
                   </a>
                 </li>
               </>

@@ -10,3 +10,13 @@ export const doRegister = async (name, email, password) => {
   const user = await postRegister(name, email, password);
   return user;
 };
+
+const logout = () => {
+  localStorage.clear();
+};
+
+export const auth = {
+  login: doLogin,
+  register: doRegister,
+  logout,
+};
