@@ -23,6 +23,13 @@ export const getCategories = async () => {
   return await categoriesRes.json();
 };
 
+export const searchBooks = async (searchString) => {
+  const bookListResponse = await fetch(
+    `${BOOK_LIST_API_URL}?title=${searchString}`
+  );
+  return await bookListResponse.json();
+};
+
 export const getBooks = async (categories, sortBy, isSortDescending) => {
   const bookListResponse = await fetch(
     `${BOOK_LIST_API_URL}?categories=${categories.join(
@@ -85,17 +92,23 @@ export const postRatingForBook = async (book_id, user_id, rating) => {
 };
 
 export const postBook = async (book) => {
-  const requestOptions = {
-    method: "POST",
-    headers: { "Content-Type": "application/json", ...getAuthHeader() },
-    body: JSON.stringify(book),
-  };
-  const resp = await fetch(BOOK_LIST_API_URL, requestOptions);
-  const respJson = await resp.json();
-  if (resp.status === 200) {
-    return await respJson;
-  } else {
-    throw new Error(respJson.message);
+  try {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json", ...getAuthHeader() },
+      body: JSON.stringify(book),
+    };
+    const resp = await fetch(BOOK_LIST_API_URL, requestOptions);
+    const respJson = await resp.json();
+
+    if (resp.status === 201) {
+      return respJson;
+    } else {
+      throw new Error(JSON.stringify(respJson));
+    }
+  } catch (err) {
+    console.log(err);
+    throw err;
   }
 };
 

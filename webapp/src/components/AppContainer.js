@@ -8,6 +8,8 @@ import SignUp from "./Auth/SignUp";
 import BookDetailsPage from "./BookDetails/BookDetailsPage";
 import BookListPage from "./BookList/BookListPage";
 import Dashboard from "./Dashboard/Dashboard";
+import ListDisplay from "./Dashboard/ListDisplay";
+import Search from "./Dashboard/Search";
 import NotFoundPage from "./ErrorPages/NotFoundPage";
 import Header from "./Header/Header";
 
@@ -25,6 +27,8 @@ const AppContainer = () => {
           />
           <AdminRoute exact path={"/addbook"} component={AddBook} />
           <PrivateRoute exact path={"/allbooks"} component={BookListPage} />
+          <PrivateRoute exact path={"/list"} component={ListDisplay} />
+          <PrivateRoute exact path={"/search"} component={Search} />
           <AuthRoute path={"/login"} component={SignIn} />
           <AuthRoute path={"/register"} component={SignUp} />
           <Route component={NotFoundPage} />

@@ -23,3 +23,14 @@
   grid-template-columns: repeat(auto-fill, 260px);
   grid-gap: 2rem;
 }
+
+.book-search-header {
+  grid-column: 1 / -1;
+}
+
+.book-search-header .form-control {
+  color: white;
+  border: 1px solid var(--color-brand);
+  font-weight: var(--fw-normal);
+  border-radius: 1.25rem;
+}

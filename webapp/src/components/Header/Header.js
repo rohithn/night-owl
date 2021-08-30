@@ -63,10 +63,20 @@ const Header = () => {
                   <a
                     className="nav-link"
                     aria-current="page"
-                    href="/dashboard"
+                    href="/search"
+                    onClick={() => history.push("/search")}
+                  >
+                    Search
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a
+                    className="nav-link"
+                    aria-current="page"
+                    href="/allbooks"
                     onClick={() => history.push("/dashboard")}
                   >
-                    Dashboard
+                    All Books
                   </a>
                 </li>
                 <li className="nav-item dropdown">

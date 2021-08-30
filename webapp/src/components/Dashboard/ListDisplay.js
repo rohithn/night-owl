@@ -8,11 +8,10 @@ import {
   fetchTopBooks,
 } from "../../services/book.service";
 import BookCard from "../BookList/BookCard";
-import CategoryCard from "./CategoryCard.js/CategoryCard";
 import "./dashboard.css";
 import SectionHeader from "./SectionHeader";
 
-const Dashboard = (props) => {
+const ListDisplay = () => {
   const [loading, setLoading] = useState(false);
   const [topBooks, setTopBooks] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -23,25 +22,10 @@ const Dashboard = (props) => {
   let location = useLocation();
 
   useEffect(() => {
-    async function fetchCategories() {
-      setLoading(true);
-
-      const booksByCategory = await fetchBookCountByCategory();
-      setCategories(booksByCategory);
-
-      const booksByAuthor = await fetchBookCountByAuthor();
-      setAuthors(booksByAuthor || []);
-
-      setLoading(false);
-    }
-
-    fetchCategories();
-  }, []);
-
-  useEffect(() => {
     console.log(location.search);
 
     async function fetchData() {
+      setLoading(true);
       const author = new URLSearchParams(location.search).get("author");
       const category = new URLSearchParams(location.search).get("category");
 
@@ -60,9 +44,10 @@ const Dashboard = (props) => {
       }
       setTopBooks(bookList);
       window.scroll(0, 0);
+      setLoading(false);
     }
     fetchData();
-  }, [location]);
+  }, []);
 
   return (
     <>
@@ -77,7 +62,7 @@ const Dashboard = (props) => {
               <SectionHeader heading={property}>
                 <div
                   className="text-warning text-uppercase cursor-pointer"
-                  onClick={() => history.push("/allbooks")}
+                  onClick={() => history.push("/")}
                 >
                   View All
                 </div>
@@ -89,24 +74,6 @@ const Dashboard = (props) => {
                   onSelect={() => history.push(`/bookdetails/${book.id}`)}
                 />
               ))}
-              <SectionHeader heading="Top Authors" />
-              {authors.map((author) => (
-                <CategoryCard
-                  key={author.author}
-                  item={author.author}
-                  count={author.book_count}
-                  onSelect={() => history.push(`/list?author=${author.author}`)}
-                />
-              ))}
-              <SectionHeader heading="All Categories" />
-              {categories.map((category) => (
-                <CategoryCard
-                  key={category.id}
-                  item={category.name}
-                  count={category.book_count}
-                  onSelect={() => history.push(`/list?category=${category.id}`)}
-                />
-              ))}
             </div>
           )}
         </div>
@@ -115,4 +82,4 @@ const Dashboard = (props) => {
   );
 };
 
-export default Dashboard;
+export default ListDisplay;

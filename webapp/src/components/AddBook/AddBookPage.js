@@ -58,9 +58,10 @@ const AddBook = () => {
     if (bookDetails) {
       try {
         const resp = await saveBook(bookDetails);
-        setMessage("Book added successfully: " + resp.inserted_hashes[0]);
+        setMessage("Book added successfully");
         setBookDetails(emptyBook);
       } catch (e) {
+        console.log(e);
         setMessage(e.message);
       }
       window.scrollTo(0, 0);

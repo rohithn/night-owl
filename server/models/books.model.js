@@ -2,18 +2,18 @@ const db = require("../config/dbconfig");
 const { NotFoundError } = require("../helpers/utility");
 
 // constructor
-// const Book = function (book) {
-//   this.id = book.id;
-//   this.title = book.title;
-//   this.author = book.author;
-//   this.category = book.category;
-//   this.category_id = book.category_id;
-//   this.cover = book.cover;
-//   this.description = book.description;
-//   this.isbn = book.isbn;
-//   this.pages = book.pages;
-//   this.website = book.website;
-// };
+const Book = function (book) {
+  this.id = book.id;
+  this.title = book.title;
+  this.author = book.author;
+  this.category = book.category;
+  this.category_id = book.category_id;
+  this.cover = book.cover;
+  this.description = book.description;
+  this.isbn = book.isbn;
+  this.pages = book.pages;
+  this.website = book.website;
+};
 
 Book.create = async (newBook) => {
   try {

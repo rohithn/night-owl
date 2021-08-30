@@ -8,6 +8,7 @@ import {
   getRatingForBook,
   getTopBooks,
   postBook,
+  searchBooks,
 } from "./apis";
 
 export const fetchAllBooks = async (sortyBy, descSort) => {
@@ -45,6 +46,10 @@ export const fetchBooksByCategories = async (categories) => {
   return await getBooks(categories, "rating", true);
 };
 
+export const fetchBooksByTitle = async (searchString) => {
+  return await searchBooks(searchString);
+};
+
 export const fetchBooksByAuthor = async (author) => {
   return await getBooksByAuthor(author, "rating", true);
 };
@@ -61,6 +66,7 @@ export const saveBook = async (book) => {
   try {
     return await postBook(book);
   } catch (e) {
+    console.log(e);
     throw e;
   }
 };
