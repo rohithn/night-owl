@@ -6,6 +6,8 @@ An online book hub for selecting, recommending, managing and reading books.
 
 💬 Server APIs: https://night-owl-api.herokuapp.com
 
+Admin login: admin@nightowl.com / admin
+
 ## Introduction
 
 This app is created as part of the UI.Focus AERN Challenge @ [Micro Focus](https://www.microfocus.com/). A big thank you to the team for the workshop on Node.js and React and for the opportunity to learn hands on with a challenging implementation.
