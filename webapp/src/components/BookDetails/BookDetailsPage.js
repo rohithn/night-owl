@@ -72,7 +72,10 @@ const BookDetailsPage = () => {
                 src={bookDetails.cover}
                 alt={bookDetails.title}
               />
-              <button className="btn-default btn-block my-3">
+              <button
+                onClick={() => window.open(bookDetails.website, "_blank")}
+                className="btn-default btn-block my-3"
+              >
                 Go to Website
               </button>
             </div>

@@ -1,6 +1,8 @@
 const db = require("../config/dbconfig");
 const { NotFoundError } = require("../helpers/utility");
 
+// User model
+
 // constructor
 const User = function (user) {
   this.email = user.email;

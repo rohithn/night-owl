@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import {
-  fetchBookCountByAuthor,
-  fetchBookCountByCategory,
   fetchBooksByAuthor,
   fetchBooksByCategories,
   fetchTopBooks,
 } from "../../services/book.service";
+import { fetchAllCategories } from "../../services/categories.service";
 import BookCard from "../BookList/BookCard";
 import "./dashboard.css";
 import SectionHeader from "./SectionHeader";
@@ -14,20 +13,18 @@ import SectionHeader from "./SectionHeader";
 const ListDisplay = () => {
   const [loading, setLoading] = useState(false);
   const [topBooks, setTopBooks] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const [authors, setAuthors] = useState([]);
   const [property, setProperty] = useState("Top Books");
 
   const history = useHistory();
   let location = useLocation();
 
   useEffect(() => {
-    console.log(location.search);
-
     async function fetchData() {
       setLoading(true);
       const author = new URLSearchParams(location.search).get("author");
       const category = new URLSearchParams(location.search).get("category");
+
+      const categories = await fetchAllCategories();
 
       let bookList = [];
       if (author) {

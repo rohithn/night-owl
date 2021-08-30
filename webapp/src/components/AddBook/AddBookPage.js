@@ -57,7 +57,7 @@ const AddBook = () => {
   const submitBook = async () => {
     if (bookDetails) {
       try {
-        const resp = await saveBook(bookDetails);
+        await saveBook(bookDetails);
         setMessage("Book added successfully");
         setBookDetails(emptyBook);
       } catch (e) {

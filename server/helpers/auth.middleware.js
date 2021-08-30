@@ -1,6 +1,9 @@
 const config = require("../config/config");
 const jwt = require("jsonwebtoken");
 
+// Auth middleware for verifying token
+
+// Login method - creates a JWT token that can be used for queries
 exports.loggedIn = function (req, res, next) {
   let token = req.header("Authorization");
   if (!token) return res.status(401).send("Access Denied");

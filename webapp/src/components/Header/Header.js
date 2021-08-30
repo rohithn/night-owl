@@ -74,7 +74,7 @@ const Header = () => {
                     className="nav-link"
                     aria-current="page"
                     href="/allbooks"
-                    onClick={() => history.push("/dashboard")}
+                    onClick={() => history.push("/allbooks")}
                   >
                     All Books
                   </a>

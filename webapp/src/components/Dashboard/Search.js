@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 import { fetchBooksByTitle } from "../../services/book.service";
 import BookCard from "../BookList/BookCard";
 import "./dashboard.css";
-import SectionHeader from "./SectionHeader";
 
 const Search = () => {
   const [loading, setLoading] = useState(false);

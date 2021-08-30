@@ -15,6 +15,7 @@ const CategoryCard = ({ item, count, onSelect }) => {
         height="16"
         className="bi bi-chevron-right text-muted"
         viewBox="0 0 16 16"
+        fill="#6c757d"
       >
         <path
           fillRule="evenodd"

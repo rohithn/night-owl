@@ -52,11 +52,6 @@ const BookListPage = () => {
     setIsSortDescending(!isSortDescending);
   };
 
-  // Not used now
-  const handleSelectionChange = (selection) => {
-    setSelectedCategories(selection);
-  };
-
   return (
     <div className="book-list-page">
       {loading ? <div className="loader" /> : <></>}

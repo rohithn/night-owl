@@ -1,6 +1,8 @@
 const db = require("../config/dbconfig");
 const { NotFoundError } = require("../helpers/utility");
 
+// Book model where CRUD is done. Implementation not compelete.
+
 // constructor
 const Book = function (book) {
   this.id = book.id;
