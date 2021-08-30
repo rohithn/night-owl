@@ -2,7 +2,7 @@ const User = require("../../models/user.model");
 const config = require("../../config/config");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const { NotFoundError } = require("../../utility/utility");
+const { NotFoundError } = require("../../helpers/utility");
 
 exports.register = async (req, res) => {
   //Hash password

@@ -2,7 +2,7 @@ const bookstall = require("express").Router();
 const bookscontroller = require("../controllers/books");
 const categoriesController = require("../controllers/category");
 const ratingsController = require("../controllers/ratings");
-const { loggedIn, adminOnly } = require("../utility/auth.middleware");
+const { loggedIn, adminOnly } = require("../helpers/auth.middleware");
 
 // Get All books
 bookstall.get("/books", bookscontroller.getAllBooks);

@@ -1,5 +1,5 @@
 const db = require("../config/dbconfig");
-const { NotFoundError } = require("../utility/utility");
+const { NotFoundError } = require("../helpers/utility");
 
 // constructor
 const User = function (user) {
