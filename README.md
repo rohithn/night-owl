@@ -70,9 +70,9 @@ Only the POST APIs are authenticated in the server.
 `Responsive UI`: The UI works on both desktop and mobile - bootstrap is used for this.
 
 <p float="left">
-  <img src="./docs/images/mob_01_dashboard.PNG" width="160" />
-  <img src="./docs/images/mob_03_addbook.PNG" width="160" />
-  <img src="./docs/images/mob_02_details.PNG" width="160" /> 
+  <img src="./docs/images/mob_01_dashboard.PNG" width="240" />
+  <img src="./docs/images/mob_03_addbook.PNG" width="240" />
+  <img src="./docs/images/mob_02_details.PNG" width="240" /> 
 </p>
 
 ## To do items
