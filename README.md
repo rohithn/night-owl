@@ -33,6 +33,8 @@ The All Books page lists all books in the system.
 - The first section displays the **top 10 books**.
 - The subsequent sections display the list of Authors and the Categories along with the number of books in each. The user can **filter by Author or Category** using this page.
 
+<img src='./docs/images/02_dashboard.png' alt='dashboard' />
+
 `Sorting`: User is able to view the latest books as well as the best rated books.
 
 - The initial list in the All Books page is **sorted based on date** that the book was added to the system.
@@ -44,6 +46,8 @@ The All Books page lists all books in the system.
 
 `Authentication & Authorization`: The system allows only authenticated users to view the library. This is achieved with the **Sign Up** and **Sign In** screens.
 
+<img src='./docs/images/01_signin.png' alt='dashboard' />
+
 System recognizes **two roles**:
 
 - **Users** - can view books and add ratings. Any newly registered user is assigned this role.
@@ -51,13 +55,25 @@ System recognizes **two roles**:
 
 Authentication is implemented with basic bearer token. When the login endpoint is called, and the user's email and password are verified, a jwt token is returned which is sent in subsequent requests. The response also contains the user roles. The password is hashed and stored in the database.
 
+Only the POST APIs are authenticated in the server.
+
 `Add Books`: Users with ADMIN privileges are allowed to create books in the system.
+
+<img src='./docs/images/04_addbook.png' alt='dashboard' />
 
 `Extensibility`: Components have been reused wherever possible. For ex. the 'Card' and the 'SectionHeader' are re-used in multiple areas of the application.
 
 `Additional Features`: Book Recommendation added - nothing fancy, just displays the rest of the books in the category.
 
+<img src='./docs/images/03_bookdetails.png' alt='dashboard' />
+
 `Responsive UI`: The UI works on both desktop and mobile - bootstrap is used for this.
+
+<p float="left">
+  <img src="./docs/images/mob_01_dashboard.PNG" width="160" />
+  <img src="./docs/images/mob_03_addbook.PNG" width="160" />
+  <img src="./docs/images/mob_02_details.PNG" width="160" /> 
+</p>
 
 ## To do items
 
@@ -98,6 +114,8 @@ Rename `.env.example` to `.env` and fill in the params with parameters from the 
 ```
 $ npm start
 ```
+
+Attached [Postman script](./docs/night-owl-apis.postman_collection.json) can be used to test the apis.
 
 ### 3. React Webapp
 

@@ -1,0 +1,340 @@
+{
+	"info": {
+		"_postman_id": "42812d52-401f-4bd6-b4fb-88f9460bef33",
+		"name": "night-owl-apis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"admin@nightowl.com\",\n    \"name\": \"Admin User\",\n    \"password\": \"admin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://night-owl-api.herokuapp.com/auth/register",
+					"protocol": "https",
+					"host": [
+						"night-owl-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"admin@nightowl.com\",\n    \"password\": \"admin\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://night-owl-api.herokuapp.com/auth/login",
+					"protocol": "https",
+					"host": [
+						"night-owl-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "books get all",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQG5pZ2h0b3dsLmNvbSIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNjMwMTY2NTQ2fQ.eVYJn_LunHILp_GwEyg99J4jOIHOJM8DUt4CbqRbXXU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://night-owl-api.herokuapp.com/api/books",
+					"protocol": "https",
+					"host": [
+						"night-owl-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "books get by id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQG5pZ2h0b3dsLmNvbSIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNjMwMTY2NTQ2fQ.eVYJn_LunHILp_GwEyg99J4jOIHOJM8DUt4CbqRbXXU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://night-owl-api.herokuapp.com/api/books/a2ced914-d9e7-4e53-bbbc-8dad97c127de",
+					"protocol": "https",
+					"host": [
+						"night-owl-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"books",
+						"a2ced914-d9e7-4e53-bbbc-8dad97c127de"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "books create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQG5pZ2h0b3dsLmNvbSIsInJvbGVzIjpbIlVTRVIiXSwiaWF0IjoxNjMwMTY2NTQ2fQ.eVYJn_LunHILp_GwEyg99J4jOIHOJM8DUt4CbqRbXXU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"cover\": \"https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1495796544l/32705383._SX318_.jpg\",\n        \"website\": \"https://www.google.co.in/books/edition/Fullstack_React/ppjUtAEACAAJ?hl=en\",\n        \"author\": \"Anthony Accomazzo\",\n        \"description\": \"LEARN REACT THE RIGHT WAY with the up-to-date, in-depth, complete book to React and the React ecosystem.Master React in less time, with solid foundations, without beating your head against the wall. Quickly get to work - or get that job - with the right tools and the best practices.\",\n        \"title\": \"Fullstack React 2: The Complete Guide to ReactJS and Friends\",\n        \"category_id\": \"50fe8bb3-c22b-4cf8-8f61-9334ee69e7a7\",\n        \"pages\": 836,\n        \"isbn\": 9780991344628\n    } ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://night-owl-api.herokuapp.com/api/books",
+					"protocol": "https",
+					"host": [
+						"night-owl-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "books bulk create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"cover\": \"https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1495796544l/32705383._SX318_.jpg\",\n        \"website\": \"https://www.google.co.in/books/edition/Fullstack_React/ppjUtAEACAAJ?hl=en\",\n        \"author\": \"Anthony Accomazzo\",\n        \"description\": \"LEARN REACT THE RIGHT WAY with the up-to-date, in-depth, complete book to React and the React ecosystem.Master React in less time, with solid foundations, without beating your head against the wall. Quickly get to work - or get that job - with the right tools and the best practices.\",\n        \"title\": \"Fullstack React: The Complete Guide to ReactJS and Friends\",\n        \"category_id\": \"50fe8bb3-c22b-4cf8-8f61-9334ee69e7a7\",\n        \"pages\": 836,\n        \"isbn\": 9780991344628\n    } ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://night-owl-api.herokuapp.com/api/books/bulk",
+					"protocol": "https",
+					"host": [
+						"night-owl-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"books",
+						"bulk"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "categories get",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://night-owl-api.herokuapp.com/api/categories",
+					"protocol": "https",
+					"host": [
+						"night-owl-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "categories get bookCount",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://night-owl-api.herokuapp.com/api/categories/books",
+					"protocol": "https",
+					"host": [
+						"night-owl-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"categories",
+						"books"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "category bulk create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"cover\": \"https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1495796544l/32705383._SX318_.jpg\",\n        \"website\": \"https://www.google.co.in/books/edition/Fullstack_React/ppjUtAEACAAJ?hl=en\",\n        \"author\": \"Anthony Accomazzo\",\n        \"description\": \"LEARN REACT THE RIGHT WAY with the up-to-date, in-depth, complete book to React and the React ecosystem.Master React in less time, with solid foundations, without beating your head against the wall. Quickly get to work - or get that job - with the right tools and the best practices.\",\n        \"title\": \"Fullstack React: The Complete Guide to ReactJS and Friends\",\n        \"category_id\": \"50fe8bb3-c22b-4cf8-8f61-9334ee69e7a7\",\n        \"pages\": 836,\n        \"isbn\": 9780991344628\n    } ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://night-owl-api.herokuapp.com/api/categories/bulk",
+					"protocol": "https",
+					"host": [
+						"night-owl-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"categories",
+						"bulk"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ratings add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_id\": \"9c96c5c2-1fdd-42a0-92b3-1edf1c2a0f99\",\n    \"book_id\": \"13e34ad2-b48c-4ac8-92cd-b2650dfdd170\",\n    \"rating\": 4\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://night-owl-api.herokuapp.com/api/ratings",
+					"protocol": "https",
+					"host": [
+						"night-owl-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"ratings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ratings get",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_id\": \"1\",\n    \"book_id\": \"13e34ad2-b48c-4ac8-92cd-b2650dfdd170\",\n    \"rating\": 3\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://night-owl-api.herokuapp.com/api/ratings",
+					"protocol": "https",
+					"host": [
+						"night-owl-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"ratings"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
